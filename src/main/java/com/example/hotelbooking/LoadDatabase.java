@@ -12,11 +12,22 @@ class LoadDatabase {
   private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
 
   @Bean
-  CommandLineRunner initDatabase(EmployeeRepository repository) {
+  CommandLineRunner initDatabase(EmployeeRepository eRepository, customerRepository cRepository , adminRepository aRepository) {
 
     return args -> {
-      log.info("Preloading " + repository.save(new Employee("Bilbo Baggins", "burglar")));
-      log.info("Preloading " + repository.save(new Employee("Frodo Baggins", "thief")));
+      log.info("Preloading " + eRepository.save(new Employee("Raya", "Database Administriter")));
+      log.info("Preloading " + eRepository.save(new Employee("Makame", "HR")));
+      log.info("Preloading" + eRepository.save(new Employee("hamiary","developer")));
+      log.info("Precloading" + cRepository.save(new customer(1,"juma","alii" , "founi" ,"juma@gmail.com","0777777",
+      "12345")));
+      log.info("Precloading" + cRepository.save(new customer(2,"suleiman","suleiman","fourHouse","sule@gmail.com","0675446789",
+      "098765"))); 
+      log.info("Precloading" + cRepository.save(new customer(3,"zuhura","Haji","Jumbi","zuhurahaji01@gmail.com","0774897643",
+      "zuhura2020"))); 
+      log.info("Preloading" + eRepository.save(new Employee("Masoud","Network Administrater")));
+      log.info("Preloading" + aRepository.save(new admin(1,"Mwinyi","michenzani","mwinyi101@hotmail")));
+
+
     };
   }
 }
